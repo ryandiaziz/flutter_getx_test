@@ -69,6 +69,14 @@ class HomePage extends StatelessWidget {
 
 class CountController extends GetxController {
   var data = 0.obs;
-  increment() => data++;
+  increment() {
+    // Menampilkan snackbar setiap nilai kelipatan 10
+    if (data % 10 == 0) {
+      // Menampilkan snackbar menggunakan Get X
+      Get.snackbar("Selamat", "Nilai sudah Melebihi $data");
+    }
+    return data++;
+  }
+
   decrement() => data--;
 }
