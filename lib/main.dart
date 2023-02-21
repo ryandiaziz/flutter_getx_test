@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -38,29 +38,64 @@ class HomePage extends StatelessWidget {
             child: Obx(
               () => Text(
                 "${value.data.value}",
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 30,
                 ),
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  value.increment();
-                },
-                child: Icon(Icons.add),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  value.decrement();
-                },
-                child: Icon(Icons.remove),
-              ),
-            ],
-          )
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    value.decrement();
+                  },
+                  child: const Icon(Icons.remove),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    value.increment();
+                  },
+                  child: const Icon(Icons.add),
+                ),
+              ],
+            ),
+          ),
+          const Divider(
+            thickness: 2,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              // Show dialog with GetX
+              Get.defaultDialog(
+                title: "Dialog with Getx",
+                content: const Text(
+                  "This is content dialog with getx dialog",
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text("OK"),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      "Cancel",
+                      style: TextStyle(
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+            child: const Text("Show Dialog"),
+          ),
         ],
       ),
     );
