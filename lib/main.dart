@@ -96,6 +96,32 @@ class HomePage extends StatelessWidget {
             },
             child: const Text("Show Dialog"),
           ),
+          const Divider(
+            thickness: 2,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Get.bottomSheet(
+                isDismissible: true,
+                enableDrag: true,
+                Container(
+                  color: Colors.white,
+                  height: 300,
+                  child: ListView(
+                    children: const [
+                      ListTile(
+                        leading: Icon(Icons.person),
+                        title: Text("Nama"),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
+            child: const Text(
+              "Bottom Sheet",
+            ),
+          ),
         ],
       ),
     );
